@@ -1,4 +1,5 @@
 class BlogPostsController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show] 
 before_action :set_blog_post, except: [:index, :new, :create]
 
   def index
@@ -9,7 +10,7 @@ before_action :set_blog_post, except: [:index, :new, :create]
   end
 
   def new
-    @blog_post = BlogPost.new
+      @blog_post = BlogPost.new
   end
 
   def create
